@@ -1,0 +1,161 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+
+    <!-- ================= PHYSICS ================= -->
+    <physics name="default_physics" default="0" type="ode">
+      <gravity>0 0 -9.81</gravity>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>10</iters>
+          <sor>1.3</sor>
+        </solver>
+        <constraints>
+          <cfm>0</cfm>
+          <erp>0.2</erp>
+        </constraints>
+      </ode>
+      <max_step_size>0.002</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>500</real_time_update_rate>
+    </physics>
+
+    <!-- ================= GROUND ================= -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- ================= SHELVES ================= -->
+    <!-- Using unit_box scaled as shelves -->
+    <model name="shelf_1">
+      <pose>1 3.4 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>2 0.5 2</size></box>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box><size>2 0.5 2</size></box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <model name="shelf_2">
+      <pose>-4.1 3.4 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>2 0.5 2</size></box>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box><size>2 0.5 2</size></box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- Add more shelves similarly -->
+    
+    <!-- ================= PALLETS/BOXES ================= -->
+    <model name="pallet_1_box">
+      <pose>1.5 3.4 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>0.8 0.8 0.5</size></box>
+          </geometry>
+          <material><ambient>0.8 0.3 0.3 1</ambient></material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box><size>0.8 0.8 0.5</size></box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <model name="pallet_1_base">
+      <pose>1.5 3.4 0.05 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>1 1 0.1</size></box>
+          </geometry>
+          <material><ambient>0.5 0.5 0.5 1</ambient></material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box><size>1 1 0.1</size></box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- Duplicate pallets as needed with different poses -->
+    <model name="pallet_2_box">
+      <pose>-3.2 3.3 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>0.8 0.8 0.5</size></box>
+          </geometry>
+          <material><ambient>0.3 0.8 0.3 1</ambient></material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box><size>0.8 0.8 0.5</size></box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <model name="pallet_2_base">
+      <pose>-3.2 3.3 0.05 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>1 1 0.1</size></box>
+          </geometry>
+          <material><ambient>0.5 0.5 0.5 1</ambient></material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box><size>1 1 0.1</size></box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- ================= TRASH CAN ================= -->
+    <model name="trash_can">
+      <pose>3.8 3.4 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <cylinder><radius>0.2</radius><length>0.5</length></cylinder>
+          </geometry>
+          <material><ambient>0.2 0.2 0.2 1</ambient></material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <cylinder><radius>0.2</radius><length>0.5</length></cylinder>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+  </world>
+</sdf>
