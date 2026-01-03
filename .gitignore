@@ -1,4 +1,18 @@
-.env
-.env*
+# ==========================
+# Ignore everything by default
+# ==========================
+*
 
+# Keep these folders
+!launch/
+!worlds/
+!urdf/
 
+# Keep .gitignore itself
+!.gitignore
+
+# ==========================
+# Inside launch: ignore .env files
+# ==========================
+launch/.env
+launch/.env*
